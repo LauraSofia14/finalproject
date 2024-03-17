@@ -1,12 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Favorites from "./components/favorites/favorites";
-import ContactsList from "./components/contactList/contacts";
-import Overview from "./components/overview/overview";
-import logofp from './assets/logofp.png';
-import { BrowserRouter as Router, Route,  Routes, Link } from 'react-router-dom';
-
-const AppWrapper = styled.div ``;
+import React from 'react';
+import styled from 'styled-components';
+import logofp from '../assets/logofp.png';
 
 const NavbarContainer = styled.nav`
     display: flex;
@@ -33,7 +27,7 @@ const NavItem = styled.li`
     margin-left: 20px;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled.a`
     text-decoration: none;
     color: black;
     &:hover {
@@ -53,10 +47,9 @@ const Button = styled.button`
 `;
 
 
-function App() {
-  return(
-    <AppWrapper>
-      <Router>
+const Navbar = () =>{
+    return(
+        <div>
         <NavbarContainer>
             <Logo src={logofp} alt="Logo" />
             <NavLinks>
@@ -66,24 +59,22 @@ function App() {
             </NavLinks>
             <NavLinks>
                 <NavItem>
-                    <NavLink to="/contacts">Contacts</NavLink>
+                    <NavLink href="#">Contacts</NavLink>
                 </NavItem>
             </NavLinks>
             <NavLinks>
                 <NavItem>
-                    <NavLink to="/favorites">Favorites</NavLink>
+                    <NavLink href="#">Favorites</NavLink>
                 </NavItem>
             </NavLinks>
             <Button>+ New</Button>
-            </NavbarContainer>
-            <Routes>
-              <Route  path="/overview" element={<Overview />} />
-              <Route  path="/contacts" element={<ContactsList />} />
-              <Route  path="/fvorites" element={<Favorites />} />
-            </Routes>
-      </Router>
-    </AppWrapper>
-  )
+        </NavbarContainer>
+        <div>
+        <hr className={'line-header'}></hr>
+        </div>
+        </div>
+        
+    )
 }
 
-export default App;
+export default Navbar;
